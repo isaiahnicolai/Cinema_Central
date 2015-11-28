@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Cinema Central</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title1">The Hunger Games</string>
+    <string name="title2">Captain America</string>
+    <string name="title3">Spectre</string>
+    <string name="y2015">2015</string>
+    <string name="y2016">2016</string>
+    <item name="red" type="color">#FFFF4444</item>
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_movie_details">MovieDetails</string>
+    <string name="title_activity_search">Search</string>
+    <string name="service_not_available">Service Not Available</string>
+    <string name="invalid_lat_long_used">Invalid Latitude or Longitude used</string>
+    <string name="no_address_found">Address Not Found</string>
+    <string name="address_found">Address Found</string>
+    <string name="no_geocoder_available">Geocode is not available</string>
+
+</resources>
