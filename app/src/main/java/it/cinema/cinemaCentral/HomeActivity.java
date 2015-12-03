@@ -1,18 +1,10 @@
 package it.cinema.cinemaCentral;
 
 
-
 import android.content.Intent;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.os.Handler;
-import android.os.ResultReceiver;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.location.LocationServices;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,13 +26,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 import it.cinema.coverflow.components.ui.containers.FeatureCoverFlow;
 
-import static android.support.v7.app.ActionBar.*;
 
-
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends ActionBarActivity {
 
     //implements ConnectionCallbacks, OnConnectionFailedListener {
 
@@ -75,17 +58,6 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(myToolbar);
 
-
-        /**
-         * Location testing
-         * not done working
-         *
-         this.mAddressRequested = true;
-         this.buildGoogleApiClient();
-         mGoogleApiClient.connect();
-         // this.startIntentService();
-         test = (TextView)findViewById(R.id.testView);
-         **/
 
         search = (Button) findViewById(R.id.searchButtonHome);
         search.setOnClickListener(new View.OnClickListener() {
@@ -188,79 +160,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-
-
-    /**
-     * Location code
-     *
-     *
-
-    protected void startIntentService() {
-        Intent intent = new Intent(this, FetchAddressIntentService.class);
-        intent.putExtra(Constants.RECEIVER, mResultReceiver);
-        intent.putExtra(Constants.LOCATION_DATA_EXTRA, mLastLocation);
-        startService(intent);
-    }
-
-
-    @Override
-    public void onConnected(Bundle bundle) {
-
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-            // Determine whether a Geocoder is available.
-            if (!Geocoder.isPresent()) {
-                Toast.makeText(this, R.string.no_geocoder_available,
-                        Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            if (mAddressRequested) {
-                startIntentService();
-            }
-
-        }
-
-    }
-    class AddressResultReceiver extends ResultReceiver {
-        public AddressResultReceiver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        protected void onReceiveResult(int resultCode, Bundle resultData){
-
-            // Display the address string
-            // or an error message sent from the intent service.
-            mAddressOutput = resultData.getString(Constants.RESULT_DATA_KEY);
-            test.setText(mAddressOutput);
-            //displayAddressOutput();
-
-            // Show a toast message if an address was found.
-            if (resultCode == Constants.SUCCESS_RESULT) {
-                Toast.makeText(getApplicationContext(), getString(R.string.address_found), Toast.LENGTH_LONG).show();
-            }
-
-        }
-    }
-
-
-
-
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-    **/
-
-
 
     /**
      * JSON request to OMDB to retrieve information about movie poster that was selected
@@ -367,18 +266,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
-    /**
-     * Builds Google Play service
-     *
-    protected synchronized void buildGoogleApiClient() {
-         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener( this)
-                .addApi(LocationServices.API)
-                .build();
-    }
-     **/
 
 }
 
